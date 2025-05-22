@@ -1,7 +1,7 @@
 const { UserModel } = require("../models/User.model")
 const ApiError = require("../utils/ApiError")
-bcryptjs = require("bcryptjs")
-JWTService = require("../utils/JWTService")
+const bcryptjs = require("bcryptjs")
+const JWTService = require("../utils/JWTService")
 
 
 class AuthService {
@@ -27,8 +27,7 @@ class AuthService {
 
 
     }
-
-    
+ 
     static async registerUser(body){
 
         const {name,email,password,ac_type} = body
@@ -49,6 +48,26 @@ class AuthService {
         }
     
     
-}}
+}
+
+static async profileUser(user){
+    const userd = await UserModel.findById(user).select("name email ac_type createdAt -_id")
+    if(!userd){
+        throw new ApiError(400, "User Profile Not Found")
+    }
+
+    return userd
+}
+
+}
+
+
+
+
+
+
+
+
+
 
 module.exports = AuthService
