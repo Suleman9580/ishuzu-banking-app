@@ -1,6 +1,5 @@
 const ApiError = require("../utils/ApiError")
-const JWTService = require("../utils/JWTService")
-
+const JWTService = require("../utils/JwtService")
 
 const AuthMiddleware  = (req,res,next)=>{
     try {

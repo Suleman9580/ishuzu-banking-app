@@ -1,22 +1,22 @@
-const express = require('express')
-const AuthController = require('../../controller/authController')
-const AuthValidation = require('../../validations/AuthValidation')
-const ValidationMiddleware = require('../../middleware/ValidationMiddleware')
-const AuthMiddleware = require('../../middleware/AuthMiddleware')
+const express = require("express")
+const AuthController = require("../../controller/AuthController")
+const AuthValidation = require("../../validations/AuthValidation")
+const ValidationMiddleware = require("../../middleware/ValidationMiddleware")
+const AuthMiddleware = require("../../middleware/AuthMiddleware")
 const router = express.Router()
 
-
-router.route('/login')
+router.route("/login")
+.get((req, res) => {res.json({ msg: "LoginPage"})})
 .post(AuthValidation.loginUser,ValidationMiddleware,AuthController.loginUser)
 
-router.route('/register')
-.post(AuthValidation.registerUser,ValidationMiddleware, AuthController.registerUser)
-
-router.route('/profile')
-.get(AuthMiddleware, AuthController.profileUser)
 
 
+router.route("/register")
+.post(AuthValidation.registerUser,ValidationMiddleware,AuthController.registerUser)
 
 
+router.route("/profile")
+.get(AuthMiddleware,AuthController.profileUser)
 
-module.exports = router 
+
+module.exports = router

@@ -10,4 +10,4 @@ const ValidationMiddleware = async(req,res,next)=>{
     next()
 }
 
-module.exports = ValidationMiddleware
+module.exports =ValidationMiddleware

@@ -1,11 +1,8 @@
-const AuthService = require("../services/authService")
-const ApiErrors = require("../utils/ApiError")
+const AuthService = require("../service/AuthService")
 
+class AuthController{
 
-
-class AuthController {
-
-     static async  loginUser(req,res){
+    static async  loginUser(req,res){
         const res_obj = await AuthService.loginUser(req.body)
         res.status(200).send(res_obj)
     }
@@ -16,11 +13,9 @@ class AuthController {
     }
 
     static async profileUser(req,res){
-        const res_obj = await AuthService.profileUser(req.user)
+        const res_obj = await AuthService.profileUser(req.user);
         res.status(200).send(res_obj)
     }
 
-
 }
-
 module.exports = AuthController

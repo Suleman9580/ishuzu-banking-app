@@ -9,7 +9,6 @@ class JWTService{
             })
             return token
         }
-        
         static ValidateToken(token){
             const data = jwt.verify(token,jwt_screate)
             return data
